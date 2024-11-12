@@ -20,7 +20,7 @@ public class Search2DMatrix {
         while(low<=high){
             int mid=low+(high-low)/2;
             int row=mid/m;
-            int col=mid%n;
+            int col=mid%m;
             if(arr[row][col]==element){
                 return true;
             } else if (arr[row][col]<element) {
