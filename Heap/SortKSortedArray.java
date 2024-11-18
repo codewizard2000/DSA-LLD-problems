@@ -1,7 +1,7 @@
 package Heap;
 
 import java.util.PriorityQueue;
-
+// quetsion can be also written as nearly sorted k array 
 // ek particular range me hi sort karna hai {6,5,3,2,8,10} ramge will be 6 t0 2 element  and we will put 2 in index one now we have 5,6,3 increase range to 4(input) 5,6,7,3,8 now check again
 public class SortKSortedArray {
     public static void sortKsortedarray(int[] arr, int k){
