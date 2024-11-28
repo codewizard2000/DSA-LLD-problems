@@ -66,6 +66,7 @@ public class RottenOrange {
         int arr[][]={ {2,1,1} , {1,1,0} , {0,1,1} };
         int rotting = orangesRotting(arr);
         System.out.println("Minimum Number of Minutes Required "+rotting);
-    }
+    }// tc=O ( n x n ) 
+    //sc=O ( n x n ) 
 }
 
