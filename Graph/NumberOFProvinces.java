@@ -14,7 +14,7 @@ public class NumberOFProvinces {
             }
         }
     }
-
+// this method will terate over each vertices and check if its marked visited or not  and if not than apply dfs
     public static int countNumberOfProvinces(int v, ArrayList<ArrayList<Integer>> adj) {
         int count = 0;
         boolean[] visited = new boolean[v + 1];
