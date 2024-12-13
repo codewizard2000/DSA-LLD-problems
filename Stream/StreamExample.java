@@ -22,6 +22,12 @@ public class StreamExample {
 
         List<Integer> name5 = Arrays.asList(1,11,3,4,5,16,7);
         name5.stream().sorted().filter(n->n%2==1).map(n->2*n).forEach(n->System.out.print(n+" "));
+
+        List<String> namease = Arrays.asList("John", "Alice", "Bob", "Emily", "David");
+        namease.stream().sorted().forEach(n->System.out.print(n+ " "));
+
+        List<String> namease3 = Arrays.asList("John", "Alice", "Bob", "Emily", "David");
+        namease3.stream().sorted(Comparator.reverseOrder()).forEach(n->System.out.print(n+ " "));
     }
 
 
