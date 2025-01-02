@@ -30,4 +30,6 @@ public class LongestSubstringWithKDistingCharacter {
         int result = longestSize(str,k);
         System.out.print(result);
     }
+    //sc=o(n)
+    //tc=o(k)
 }
