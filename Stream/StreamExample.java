@@ -28,6 +28,12 @@ public class StreamExample {
 
         List<String> namease3 = Arrays.asList("John", "Alice", "Bob", "Emily", "David");
         namease3.stream().sorted(Comparator.reverseOrder()).forEach(n->System.out.print(n+ " "));
+
+        List<Integer> name6 = Arrays.asList(1,2,3,4,5,6,7);
+        int sum=name6.stream().filter(n->n%2==0).mapToInt(n->n%2).sum();
+        System.out.print(sum);
+
+        
     }
 
 
