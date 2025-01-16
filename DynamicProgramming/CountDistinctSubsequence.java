@@ -30,5 +30,6 @@ public class CountDistinctSubsequence {
         String str = "gfg";
         System.out.println("Number of distinct subsequences: " + countDistinctSubsequences(str));
     }
-
+//tc=o(n)
+    //sc=o(n)
 }
