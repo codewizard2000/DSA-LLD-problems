@@ -33,6 +33,14 @@ public class StreamExample {
         int sum=name6.stream().filter(n->n%2==0).mapToInt(n->n%2).sum();
         System.out.print(sum);
 
+        List<Integer> name7 = Arrays.asList(1,2,3,4,5,6,7);
+        List<Integer> even = name7.stream().filter(n->n%2==0).collect(Collectors.toList());
+        List<Integer> odd = name7.stream().filter(n->n%2==0).collect(Collectors.toList());
+        List<Integer> result = Stream.concat(even.stream(),odd.stream()).collect(Collectors.toList());
+        System.out.println(result);
+
+        
+
         
     }
 
