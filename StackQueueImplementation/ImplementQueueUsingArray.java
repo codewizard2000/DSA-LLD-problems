@@ -1,62 +1,52 @@
 package StackQueueImplementation;
 
-public class ImplementQueueUsingArray {
-    public int[] queueArray;
-    public int size;
-    public int top;
-    public int front;
+public class QueueUsingArray {
+    int[] queue;
+    int front, rear, size;
 
-    public ImplementQueueUsingArray(int size){
-        this.size=size;
-        this.front=0;
-        this.top=-1;
-        this.queueArray=new int[size];
-
+    public QueueUsingArray(int size) {
+        this.size = size;
+        queue = new int[size];
+        front = 0;
+        rear = 0;
     }
 
-    public void enqueue(int value){
-        if(top==size-1){
-            System.out.println("queue is full");
+    public void enqueue(int value) {
+        if (rear == size) {
+            System.out.println("Queue is full");
             return;
-        }else{
-            top=top+1;
-            queueArray[top]=value;
         }
+        queue[rear++] = value;
     }
 
-    public void dequeue(){
-        if(top==-1){
-            System.out.println("queue is empty");
-            return ;
-        }else{
-            for(int i=0;i<top;i++){
-                queueArray[i]=queueArray[i+1];
-            }
-            top=top-1;
-        }
-    }
-
-    public void display(){
-        if(top==-1){
-            System.out.println("queue is empty");
-        }else{
-
-            for(int i=0;i<=top;i++){
-                System.out.print(queueArray[i]+" ");
-            }
-        }
-
-    }
-
-    public int front(){
-        if(top==-1){
-            System.out.print("queue is empty no front element ");
+    public int dequeue() {
+        if (front == rear) {
+            System.out.println("Queue is empty");
             return -1;
-        }else{
-            System.out.println("top element is "+queueArray[front]);
-            return queueArray[front];
         }
+        return queue[front++];
     }
+
+    public int peek() {
+        if (front == rear) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        return queue[front];
+    }
+
+    public void display() {
+        if (front == rear) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        for (int i = front; i < rear; i++) {
+            System.out.print(queue[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
     public static void main(String[] args){
         ImplementQueueUsingArray queue = new ImplementQueueUsingArray(5);
         queue.enqueue(1);
@@ -74,3 +64,4 @@ public class ImplementQueueUsingArray {
 
     }
 }
+
