@@ -19,5 +19,13 @@ public class NotificationService {
         notificationInterface.sendNotification(notification);
     }
 
+    public void sendNotificationToAll(Notification notification) {
+    for (Map.Entry<NotificationChannel, NotificationInterface> entry : map.entrySet()) {
+        NotificationChannel channel = entry.getKey();
+        NotificationInterface notificationInterface = entry.getValue();
+
+        notificationInterface.sendNotification(notification);
+    }
 
 }
+
