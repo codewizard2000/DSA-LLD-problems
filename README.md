@@ -24,3 +24,4 @@ for file sync using polling and latest commit changes will be polled first and f
 for larger files using chunking means break file in chunk and s3 dont send each chuck to meta data its it send whole object so when chuck is uploaded client  get a etag and that tag is send to backend and updated in meta data than we can track the chunk status and till where it is uploaded .
 and there is possiblilty there is duplicate upload of same file for that use sha fingerfrint to identify the the content ands store it in meta data .
 for security use session based and in data base use encrypter use and by key only content is accessed .
+use spearte share list with file and user in separate db .
