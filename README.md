@@ -25,3 +25,5 @@ for larger files using chunking means break file in chunk and s3 dont send each 
 and there is possiblilty there is duplicate upload of same file for that use sha fingerfrint to identify the the content ands store it in meta data .
 for security use session based and in data base use encrypter use and by key only content is accessed .
 use spearte share list with file and user in separate db .
+
+now same yotube everything same as Dropbox but one extra things is video splitter whihc comes after transcoder where splits the video in different fromat and each fromat has multiple segement nd these segment is stored in manifest file and when video is played and version is selected as per the requirement the segment 1 is dowloaded and played and segment 2 is downloaded in background to avoid buffering and if net is slow 480 pe format  segment is switched automatically .and video splitter updates the manifest url to meta data .
