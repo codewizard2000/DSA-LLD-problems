@@ -14,3 +14,13 @@ when the system is dowm we can use fail open or fail close as per requirement .
 
 for low latency make connection pool for tcp handshake .
 
+Drop box :
+client can upload file , sync the file share the file and download the file 
+
+use CDN for downloading and caching the frequent visited data and cdn chooses closest server so low latency .
+use api gateway and load balancer and authorizatoion at starting .
+dont upload it directly through backend upload direnctly using predefined URL in S3 buckect directly and notify to meta data db no sql cassandra.
+for file sync using polling and latest commit changes will be polled first and for local changes file watcher will check and uploaded to s3 if changes done .
+for larger files using chunking means break file in chunk and s3 dont send each chuck to meta data its it send whole object so when chuck is uploaded client  get a etag and that tag is send to backend and updated in meta data than we can track the chunk status and till where it is uploaded .
+and there is possiblilty there is duplicate upload of same file for that use sha fingerfrint to identify the the content ands store it in meta data .
+for security use session based and in data base use encrypter use and by key only content is accessed .
