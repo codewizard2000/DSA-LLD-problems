@@ -27,3 +27,32 @@ for security use session based and in data base use encrypter use and by key onl
 use spearte share list with file and user in separate db .
 
 now same yotube everything same as Dropbox but one extra things is video splitter whihc comes after transcoder where splits the video in different fromat and each fromat has multiple segement nd these segment is stored in manifest file and when video is played and version is selected as per the requirement the segment 1 is dowloaded and played and segment 2 is downloaded in background to avoid buffering and if net is slow 480 pe format  segment is switched automatically .and video splitter updates the manifest url to meta data .
+
+
+
+
+
+message sending platform:
+Data Flow:
+
+1. user opens the whatsapp a websocket(request) goes to backend.
+
+2. Backend service first check whether there is an existing open WS connector present or not. if present: return that, otherwise create a new one.
+
+3. user1 send msg. send(msg, user1, user2)
+
+2. chat service check redis, if user2 is active or not
+
+3. if active it add the websocket server id in the message and push it the respective redis stream (channel)
+
+4. if not service put push to the redis stream (channel) marking it as offline.
+
+5. Send single tick notification to user1 6.
+
+If user2 is online, chat server subscribe to the channel, consume that message and send it to receiver (user2)
+
+7. On receiving user2 sends an acknowledgment event back to the chat server 8. Chat Svc send the delivery/read receipt event into the respective redis stream (channel) of the sender (user1)
+
+9. Message Consumer Svc persist that delivery/read receipt and persist it on Chat DB 18. Incase of group message, Chat Svc check all the members from the group Svc, then check the redis cluster to check all the active online user, if online, then repeat send 3, otherwise repeat step 4
+
+11. Once user comes after sometime, it first pull all the unread msg using the msg svc
