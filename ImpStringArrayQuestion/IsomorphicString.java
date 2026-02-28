@@ -1,30 +1,46 @@
 package ImpStringArrayQuestion;
 
 import java.util.HashMap;
-
 public class IsomorphicString {
-    public static Boolean isomorphicString(String s1, String s2){
-        if (s1.length() != s2.length()) return false;
-        HashMap<Character,Integer> map1 = new HashMap<>();
-        HashMap<Character,Integer> map2 = new HashMap<>();
 
-        for(int i=0;i<s1.length();i++){
-            if(!map1.containsKey(s1.charAt(i))){
-                map1.put(s1.charAt(i),i);
-            }
-            if(!map2.containsKey(s2.charAt(i))){
-                map2.put(s2.charAt(i),i);
-            }
-            if(!map1.get(s1.charAt(i)).equals(map2.get(s2.charAt(i)))){
-                return false;
+    public static boolean isIsomorphic(String s, String t) {
 
+        // Length check
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        // Mapping arrays (ASCII characters)
+        int[] mapS = new int[256];
+        int[] mapT = new int[256];
+
+        for (int i = 0; i < s.length(); i++) {
+
+            char ch1 = s.charAt(i);
+            char ch2 = t.charAt(i);
+
+            // If both characters are not mapped yet
+            if (mapS[ch1] == 0 && mapT[ch2] == 0) {
+                mapS[ch1] = ch2;   // store ASCII of ch2
+                mapT[ch2] = ch1;   // store ASCII of ch1
+            }
+            // If already mapped, check if mapping matches
+            else {
+                if (mapS[ch1] != ch2 || mapT[ch2] != ch1) {
+                    return false;
+                }
             }
         }
+
         return true;
     }
-    public static void main(String[] args){
-        String s1="aab";
-        String s2="xxz";
-        System.out.print(isomorphicString(s1,s2));
+
+    public static void main(String[] args) {
+
+        System.out.println(isIsomorphic("egg", "add"));    // true
+        System.out.println(isIsomorphic("foo", "bar"));    // false
+        System.out.println(isIsomorphic("paper", "title")); // true
+        System.out.println(isIsomorphic("ab", "aa"));      // false
     }
 }
+
